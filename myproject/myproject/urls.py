@@ -1,8 +1,7 @@
-"""
-URL configuration for myproject project.
+"""myproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,9 +18,11 @@ from django.urls import path
 from crud import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path('', views.TopView.as_view(), name="top"),
     path('crud/', views.ProductListView.as_view(), name="list"),
     path('crud/new/', views.ProductCreateView.as_view(), name="new"),
+    path('crud/edit/<int:pk>', views.ProductUpdateView.as_view(), name="edit"),
+    path('crud/delete/<int:pk>', views.ProductDeleteView.as_view(), name="delete"),
+    path('crud/detail/<int:pk>', views.ProductDetailView.as_view(), name="detail"),
 ]
-
